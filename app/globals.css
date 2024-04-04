@@ -8,14 +8,13 @@ body {
 
 @layer utilities {
     .gradien {
-
-      background: rgb(241,188,0);
-      background: -moz-linear-gradient(90deg, rgba(241,188,0,1) 0%, rgba(241,43,0,1) 50%, rgba(92,0,241,1) 100%);
-      background: -webkit-linear-gradient(90deg, rgba(241,188,0,1) 0%, rgba(241,43,0,1) 50%, rgba(92,0,241,1) 100%);
-      background: linear-gradient(90deg, rgba(241,188,0,1) 0%, rgba(241,43,0,1) 50%, rgba(92,0,241,1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f1bc00",endColorstr="#5c00f1",GradientType=1);
+      background: rgb(92,0,241);
+      background: -moz-linear-gradient(90deg, rgba(92,0,241,1) 0%, rgba(241,43,0,1) 50%, rgba(241,188,0,1) 100%);
+      background: -webkit-linear-gradient(90deg, rgba(92,0,241,1) 0%, rgba(241,43,0,1) 50%, rgba(241,188,0,1) 100%);
+      background: linear-gradient(90deg, rgba(92,0,241,1) 0%, rgba(241,43,0,1) 50%, rgba(241,188,0,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5c00f1",endColorstr="#f1bc00",GradientType=1);
     }
-  
+    
     .gradienText {
       background: rgb(241,0,0);
       background: -moz-linear-gradient(90deg, rgba(241,0,0,1) 0%, rgba(241,188,0,1) 80%);
@@ -26,12 +25,11 @@ body {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
     #logodraw{
       stroke-dasharray: 0 100; 
       animation: draw-path 2s ease-in-out forwards; 
-  
     }
-
     
     @keyframes draw-path {
       from {
@@ -42,5 +40,7 @@ body {
         
       }
     }
+    
+    
 }
 

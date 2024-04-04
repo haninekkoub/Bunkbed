@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/navbar";
+import Projects from "@/components/projects";
 
 const SfPro = localFont({
   src: [
@@ -72,6 +73,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Projects />
       </body>
     </html>
   );

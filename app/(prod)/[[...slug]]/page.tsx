@@ -18,7 +18,6 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
       </div>
     );
   }
-  console.log(page);
   return (
     <div>
       {page.content.map(({ _type, ...object }: any) => {
