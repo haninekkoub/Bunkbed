@@ -81,11 +81,16 @@ export default function EmblaCarousel(props: PropType) {
           }
 
           const tweenValue = 1 - Math.abs(diffToTarget * tweenFactor.current);
-          const scale = numberWithinRange(tweenValue, 0.8, 1).toString();
-          // const opacity = numberWithinRange(tweenValue, 0, 1).toString();
+          const tweengrayValue =
+            1 - Math.abs(diffToTarget * (tweenFactor.current + 3));
+          const scale = numberWithinRange(tweenValue, 0.85, 1).toString();
+          const grayscale = numberWithinRange(tweengrayValue, 0, 1);
           const tweenNode = tweenNodes.current[slideIndex];
           tweenNode.style.transform = `scale(${scale})`;
-          // emblaApi.slideNodes()[slideIndex].style.opacity = opacity;
+          // emblaApi.slideNodes()[
+          //   slideIndex
+          // ].style.filter = `grayscale(calc(1 - ${grayscale} ))`;
+          tweenNode.style.filter = `grayscale(calc(1 - ${grayscale} ))`;
         });
       });
     },
@@ -107,12 +112,12 @@ export default function EmblaCarousel(props: PropType) {
   }, [emblaApi, tweenScale]);
   return (
     <section className="embla mx-auto min-w-full flex items-center">
-      <div className="overflow-hidden h-[75%] w-full" ref={emblaRef}>
-        <div className="flex h-full touch-pan-y -ml-10">
+      <div className="overflow-hidden h-[80%] w-full" ref={emblaRef}>
+        <div className="flex h-full touch-pan-y ">
           {images.map(({ id, src }) => (
             <div
               key={id}
-              className="flex-grow-0 flex-shrink-0 w-[60%] pl-10 min-w-0 relative"
+              className="flex-grow-0 flex-shrink-0 w-[60%] min-w-0 relative"
             >
               <Image
                 src={src}

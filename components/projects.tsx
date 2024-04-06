@@ -1,7 +1,6 @@
 "use client";
 import EmblaCarousel from "./carousel";
 import { EmblaOptionsType } from "embla-carousel";
-import Carousel from "./test";
 
 const OPTIONS: EmblaOptionsType = { loop: true };
 const SLIDE_COUNT = 5;

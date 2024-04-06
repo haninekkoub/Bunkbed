@@ -5,36 +5,15 @@ import {
   EmblaOptionsType,
 } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
-import Image from "next/image";
-import image1 from "./assets/img-1.jpg";
-import image2 from "./assets/img-2.jpg";
-import image3 from "./assets/img-3.jpg";
-import image4 from "./assets/img-4.jpg";
-import image5 from "./assets/img-5.jpg";
-import image6 from "./assets/img-6.jpg";
-import image7 from "./assets/img-7.jpg";
 
-const images = [
-  { src: image1, id: 1, name: "image1" },
-  { src: image2, id: 2, name: "image2" },
-  { src: image3, id: 3, name: "image3" },
-  { src: image4, id: 4, name: "image4" },
-  { src: image5, id: 5, name: "image5" },
-  { src: image6, id: 6, name: "image6" },
-  { src: image7, id: 7, name: "image7" },
-];
-
-const TWEEN_FACTOR_BASE = 0.52;
-
-const numberWithinRange = (number: number, min: number, max: number): number =>
-  Math.min(Math.max(number, min), max);
+const TWEEN_FACTOR_BASE = 0.2;
 
 type PropType = {
   slides: number[];
   options?: EmblaOptionsType;
 };
 
-const Carousel: React.FC<PropType> = (props) => {
+const EmblaCarousel: React.FC<PropType> = (props) => {
   const { slides, options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const tweenFactor = useRef(0);
@@ -42,7 +21,7 @@ const Carousel: React.FC<PropType> = (props) => {
 
   const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
     tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {
-      return slideNode.querySelector(".embla__slide__number") as HTMLElement;
+      return slideNode.querySelector(".embla__parallax__layer") as HTMLElement;
     });
   }, []);
 
@@ -50,7 +29,7 @@ const Carousel: React.FC<PropType> = (props) => {
     tweenFactor.current = TWEEN_FACTOR_BASE * emblaApi.scrollSnapList().length;
   }, []);
 
-  const tweenScale = useCallback(
+  const tweenParallax = useCallback(
     (emblaApi: EmblaCarouselType, eventName?: EmblaEventType) => {
       const engine = emblaApi.internalEngine();
       const scrollProgress = emblaApi.scrollProgress();
@@ -81,12 +60,9 @@ const Carousel: React.FC<PropType> = (props) => {
             });
           }
 
-          const tweenValue = 1 - Math.abs(diffToTarget * tweenFactor.current);
-          const scale = numberWithinRange(tweenValue, 0, 1).toString();
-          const opacity = numberWithinRange(tweenValue, 0, 1).toString();
+          const translate = diffToTarget * (-1 * tweenFactor.current) * 100;
           const tweenNode = tweenNodes.current[slideIndex];
-          tweenNode.style.transform = `scale(${scale})`;
-          emblaApi.slideNodes()[slideIndex].style.opacity = opacity;
+          tweenNode.style.transform = `translateX(${translate}%)`;
         });
       });
     },
@@ -98,38 +74,30 @@ const Carousel: React.FC<PropType> = (props) => {
 
     setTweenNodes(emblaApi);
     setTweenFactor(emblaApi);
-    tweenScale(emblaApi);
+    tweenParallax(emblaApi);
 
     emblaApi
       .on("reInit", setTweenNodes)
       .on("reInit", setTweenFactor)
-      .on("reInit", tweenScale)
-      .on("scroll", tweenScale);
-  }, [emblaApi, tweenScale]);
+      .on("reInit", tweenParallax)
+      .on("scroll", tweenParallax);
+  }, [emblaApi, tweenParallax]);
 
   return (
-    <div className="embla mx-auto min-w-full flex items-center">
-      <div className="overflow-hidden h-[75%] w-full" ref={emblaRef}>
-        <div className="flex h-full touch-pan-y -ml-10">
-          {/* {slides.map((index) => (
+    <div className="embla">
+      <div className="embla__viewport" ref={emblaRef}>
+        <div className="embla__container">
+          {slides.map((index) => (
             <div className="embla__slide" key={index}>
-              <div className="embla__slide__number border-2 border-black">
-                {index + 1}
+              <div className="embla__parallax">
+                <div className="embla__parallax__layer">
+                  <img
+                    className="embla__slide__img embla__parallax__img"
+                    src={`https://picsum.photos/600/350?v=${index}`}
+                    alt="Your alt text"
+                  />
+                </div>
               </div>
-            </div>
-          ))} */}
-          {images.map(({ id, src }) => (
-            <div
-              key={id}
-              className="flex-grow-0 flex-shrink-0 w-[60%] pl-10 min-w-0 relative"
-            >
-              <Image
-                src={src}
-                alt={"project"}
-                height={500}
-                width={500}
-                className="embla__slide__number w-full h-full object-cover rounded-2xl"
-              />
             </div>
           ))}
         </div>
@@ -138,4 +106,4 @@ const Carousel: React.FC<PropType> = (props) => {
   );
 };
 
-export default Carousel;
+export default EmblaCarousel;
