@@ -10,19 +10,11 @@ import Image from "next/image";
 import image1 from "./assets/img-1.jpg";
 import image2 from "./assets/img-2.jpg";
 import image3 from "./assets/img-3.jpg";
-import image4 from "./assets/img-4.jpg";
-import image5 from "./assets/img-5.jpg";
-import image6 from "./assets/img-6.jpg";
-import image7 from "./assets/img-7.jpg";
 
 const images = [
   { src: image1, id: 1, name: "image1" },
   { src: image2, id: 2, name: "image2" },
   { src: image3, id: 3, name: "image3" },
-  { src: image4, id: 4, name: "image4" },
-  { src: image5, id: 5, name: "image5" },
-  { src: image6, id: 6, name: "image6" },
-  { src: image7, id: 7, name: "image7" },
 ];
 
 type PropType = {
@@ -41,7 +33,7 @@ export default function EmblaCarousel(props: PropType) {
 
   const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
     tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {
-      return slideNode.querySelector(".embla__slide__number") as HTMLElement;
+      return slideNode.querySelector(".slide") as HTMLElement;
     });
   }, []);
 
@@ -117,14 +109,14 @@ export default function EmblaCarousel(props: PropType) {
           {images.map(({ id, src }) => (
             <div
               key={id}
-              className="flex-grow-0 flex-shrink-0 w-[60%] min-w-0 relative"
+              className="flex-grow-0 flex-shrink-0 w-[60%] min-w-0 relative hover:cursor-pointer"
             >
               <Image
                 src={src}
                 alt={"project"}
                 height={500}
                 width={500}
-                className="embla__slide__number w-full h-full object-cover rounded-2xl"
+                className="slide  w-full h-full object-cover rounded-2xl "
               />
             </div>
           ))}
