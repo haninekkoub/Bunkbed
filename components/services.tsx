@@ -43,7 +43,7 @@ export default function Services() {
       setHovered(true);
 
       if (circleRef.current) {
-        let currentRadius = circleRef.current.getAttribute("r");
+        let currentRadius = circleRef.current?.getAttribute("r");
         let targetRadius = 800;
         let increment = 10;
         let interval = setInterval(() => {
