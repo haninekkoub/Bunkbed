@@ -46,7 +46,7 @@ export default function Ctabutton() {
             ? "translate-x-0 opacity-100 w-2/12"
             : "translate-x-[100%] opacity-0 w-0"
         }
-        ${isSubmitted ? "w-2/3 delay-300 submitanimation" : "w-2/12"}
+        ${isSubmitted ? "w-2/3 delay-300 submitanimation" : ""}
         `}
         type="submit"
       >

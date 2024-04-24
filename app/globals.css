@@ -26,7 +26,7 @@ body {
       -webkit-text-fill-color: transparent;
     }
 
-    #logodraw{
+    #logodraw {
       stroke-dasharray: 0 100; 
       animation: draw-path 2s ease-in-out forwards; 
     }
@@ -49,6 +49,19 @@ body {
         0% { transform: translateY(0);}
         100% { transform: translateY(150%) }
       }
+    
+    .small {
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: all 500ms;
+    }
+    .height {
+      grid-template-rows: 1fr;
+      opacity: 1;
+      transition: all 500ms;
+    }
+
+
   }
 
 

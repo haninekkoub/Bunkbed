@@ -6,7 +6,7 @@ const OPTIONS: EmblaOptionsType = { loop: true };
 
 export default function Projects() {
   return (
-    <section className="w-full h-[650px] relative">
+    <section className="w-full h-[650px] relative my-20">
       <div className=" h-full w-[100vw] flex z-20  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
         <EmblaCarousel options={OPTIONS} />
       </div>

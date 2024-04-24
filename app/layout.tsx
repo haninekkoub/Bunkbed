@@ -4,8 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Projects from "@/components/projects";
 import Footer from "@/components/footer";
-import Magnets from "@/components/magnets";
 import About from "@/components/about";
+import Services from "@/components/services";
 
 const SfPro = localFont({
   src: [
@@ -59,6 +59,7 @@ const Outreque = localFont({
   display: "swap",
   variable: "--outreque",
 });
+
 export const metadata: Metadata = {
   title: "Bunkbed Studio",
   description: "Bunkbed Studio",
@@ -78,6 +79,7 @@ export default function RootLayout({
             {children}
             <Projects />
             <About />
+            <Services />
           </div>
         </div>
         <Footer />

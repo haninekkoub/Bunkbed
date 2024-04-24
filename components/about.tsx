@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section className="relative w-[60vw] my-28 mx-auto">
-      <p className="text-4xl font-medium font-Outreque text-center leading-[3.5rem] py-12">
+    <section className="relative w-[60vw] my-24 mx-auto">
+      <p className="text-4xl font-medium font-Outreque text-center leading-[3.5rem] py-12 ">
         At Bunkbed, we're a passionate team of web design specialists obsessed
         with creating stunning and functional websites that drive results. We
         believe your website is more than just an online brochure; it's a
