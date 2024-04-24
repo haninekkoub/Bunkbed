@@ -33,7 +33,7 @@ export default function Services() {
   const [hoveredItemId, setHoveredItemId] = useState(1);
   const [hovered, setHovered] = useState(false);
   const [lastHoveredItemId, setLastHoveredItemId] = useState(1);
-  const circleRef = useRef(null);
+  const circleRef = useRef<SVGCircleElement>(null);
 
   const handleMouseEnter = (id: React.SetStateAction<number>) => {
     setLastHoveredItemId(hoveredItemId);
@@ -43,18 +43,22 @@ export default function Services() {
       setHovered(true);
 
       if (circleRef.current) {
-        let currentRadius = circleRef.current?.getAttribute("r");
+        let currentRadius = circleRef.current.getAttribute("r");
         let targetRadius = 800;
         let increment = 10;
-        let interval = setInterval(() => {
-          currentRadius = parseInt(currentRadius);
-          if (currentRadius < targetRadius) {
-            currentRadius += increment;
-            circleRef.current?.setAttribute("r", currentRadius);
-          } else {
-            clearInterval(interval);
-          }
-        }, 10);
+        if (currentRadius !== null) {
+          // Null check
+          let radiusNumber = parseInt(currentRadius);
+
+          let interval = setInterval(() => {
+            if (radiusNumber < targetRadius) {
+              radiusNumber += increment;
+              circleRef.current?.setAttribute("r", radiusNumber.toString());
+            } else {
+              clearInterval(interval);
+            }
+          }, 10);
+        }
       }
     }, 100);
   };
