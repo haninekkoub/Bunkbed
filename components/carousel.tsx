@@ -88,7 +88,6 @@ export default function EmblaCarousel(props: PropType) {
     },
     []
   );
-
   useEffect(() => {
     if (!emblaApi) return;
 
@@ -101,7 +100,7 @@ export default function EmblaCarousel(props: PropType) {
       .on("reInit", setTweenFactor)
       .on("reInit", tweenScale)
       .on("scroll", tweenScale);
-  }, [emblaApi, tweenScale]);
+  }, [emblaApi, tweenScale, setTweenNodes, setTweenFactor]);
   return (
     <section className="embla mx-auto min-w-full flex items-center">
       <div className="overflow-hidden h-[80%] w-full" ref={emblaRef}>

@@ -14,8 +14,9 @@ export default function Magnets({
 
   useEffect(() => {
     const onMouseEnter = (e: MouseEvent) => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
+      const currentRef = ref.current;
+      if (currentRef) {
+        const rect = currentRef.getBoundingClientRect();
         const h = rect.width / 2;
 
         const x = e.clientX - rect.left - h;
@@ -30,39 +31,44 @@ export default function Magnets({
 
         const op = r2 / r1 + 0.25;
 
-        ref.current.style.setProperty("--tx", `${tx}px`);
-        ref.current.style.setProperty("--ty", `${ty}px`);
-        ref.current.style.setProperty("--opacity", `${op}`);
+        currentRef.style.setProperty("--tx", `${tx}px`);
+        currentRef.style.setProperty("--ty", `${ty}px`);
+        currentRef.style.setProperty("--opacity", `${op}`);
       }
     };
 
-    if (ref.current) {
-      ref.current.addEventListener("mousemove", onMouseEnter);
+    const currentRef = ref.current;
+    if (currentRef) {
+      currentRef.addEventListener("mousemove", onMouseEnter);
     }
 
     return () => {
-      if (ref.current) {
-        ref.current.removeEventListener("mousemove", onMouseEnter);
+      const currentRef = ref.current;
+      if (currentRef) {
+        currentRef.removeEventListener("mousemove", onMouseEnter);
       }
     };
   }, []);
 
   useEffect(() => {
-    const onMouseLeave = (e: MouseEvent) => {
-      if (ref.current) {
+    const onMouseLeave = () => {
+      const currentRef = ref.current;
+
+      if (currentRef) {
         ref.current.style.setProperty("--tx", "0px");
         ref.current.style.setProperty("--ty", "0px");
         ref.current.style.setProperty("--opacity", `${0.25}`);
       }
     };
-
-    if (ref.current) {
-      ref.current.addEventListener("mouseleave", onMouseLeave);
+    const currentRef = ref.current;
+    if (currentRef) {
+      currentRef.addEventListener("mouseleave", onMouseLeave);
     }
 
     return () => {
-      if (ref.current) {
-        ref.current.removeEventListener("mouseleave", onMouseLeave);
+      const currentRef = ref.current;
+      if (currentRef) {
+        currentRef.removeEventListener("mouseleave", onMouseLeave);
       }
     };
   }, []);

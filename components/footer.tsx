@@ -8,7 +8,7 @@ export default function Footer() {
     <section className="h-[85vh] min-h-fit w-[100vw] sticky bottom-0 bg-black font-SfPro text-white pt-14 pb-10 px-[8vw] flex flex-col justify-between items-center">
       <h2 className="text-6xl w-[70vw] max-w-[1024px] text-center">
         Ready to Ditch Your Dated Website? Build a Conversion Machine.
-        <span className="gradienText"> Let's Talk. </span>
+        <span className="gradienText"> Let&apos;s Talk. </span>
       </h2>
       <Ctabutton />
       <Socials />
