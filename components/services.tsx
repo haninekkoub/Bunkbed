@@ -1,8 +1,8 @@
 "use client";
 import React, { useRef, useState } from "react";
-import Image1 from "./assets/img-1.jpg";
-import Image2 from "./assets/img-2.jpg";
-import Image3 from "./assets/img-3.jpg";
+import Image1 from "./assets/img-4.png";
+import Image2 from "./assets/img-5.png";
+import Image3 from "./assets/img-6.png";
 import Image from "next/image";
 
 const lists = [
