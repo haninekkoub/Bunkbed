@@ -1,18 +1,16 @@
-import Logo from "@/assets/largelogo.svg";
-import Image from "next/image";
+"use client";
 
-export default function About() {
+import { AboutBlock } from "@/lib/types";
+import { InlineSvgPreviewComponent } from "@focus-reactive/sanity-plugin-inline-svg-input";
+
+export default function About({ aboutDescription, icon }: AboutBlock) {
   return (
-    <section className="relative w-[60vw] my-24 mx-auto">
-      <p className="text-4xl font-medium font-Outreque text-center leading-[3.5rem] py-12 ">
-        At Bunkbed, we&apos;re a passionate team of web design specialists
-        obsessed with creating stunning and functional websites that drive
-        results. We believe your website is more than just an online brochure;
-        it&apos;s a powerful conversion tool that reflects your brand and
-        connects with your audience.
+    <section className="relative sm:w-2/3 my-24 mx-auto">
+      <p className="text-base sm:text-2xl xl:text-4xl font-medium font-Outreque text-center sm:leading-[3rem] xl:leading-[3.5rem] sm:py-12 ">
+        {aboutDescription}
       </p>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full -z-10 opacity-50 w-full">
-        <Image src={Logo} alt={"logo"} className="h-full w-full" />
+        {/* <InlineSvgPreviewComponent value={icon} className="w-full h-full" /> */}
       </div>
     </section>
   );

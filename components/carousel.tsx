@@ -108,7 +108,7 @@ export default function EmblaCarousel(props: PropType) {
           {images.map(({ id, src }) => (
             <div
               key={id}
-              className="flex-grow-0 flex-shrink-0 w-[60%] min-w-0 relative hover:cursor-pointer"
+              className="flex-grow-0 flex-shrink-0 w-[70%] md:w-[60%] min-w-0 relative hover:cursor-pointer"
             >
               <Image
                 src={src}

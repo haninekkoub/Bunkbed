@@ -14,13 +14,17 @@ export default function Ctabutton() {
   };
   return (
     <form
-      className={` max-w-[980px] border-white pb-6 text-3xl relative flex justify-center items-center overflow-hidden transition-all duration-700 ease-in-out delay-300
-      ${isSubmitted ? "w-1/6 border-b-4  " : "w-[50vw] border-b-2"}
+      className={` max-w-[980px] border-white pb-6 text-xl md:text-2xl xl:text-3xl relative flex justify-center items-center overflow-hidden transition-all duration-700 ease-in-out delay-300
+      ${
+        isSubmitted
+          ? "w-1/3 md:w-1/6 border-b-4  "
+          : "w-2/3 md:w-[50vw] border-b-2"
+      }
       `}
       onSubmit={handleSubmit}
     >
       <span
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 whitespace-nowrap -z-20 transition-all duration-500 ease-in-out text-white font-Outreque opacity-50
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 whitespace-nowrap -z-20 transition-all duration-500 ease-in-out text-white font-Outreque opacity-50 text-lg md:text-xl lg:text-2xl xl:text-3xl
           ${
             isSubmitted
               ? "-translate-y-1/2 delay-[1200ms]  "
@@ -31,7 +35,7 @@ export default function Ctabutton() {
         Thank You!
       </span>
       <input
-        className={`placeholder:text-white placeholder:opacity-50 fill:bg-transparent bg-transparent font-Outreque py-2  text-center focus:outline-none transition-all duration-500   ease-in-out delay-300  
+        className={`placeholder:text-white placeholder:opacity-50 placeholder:text-sm md:placeholder:text-base fill:bg-transparent bg-transparent font-Outreque py-2  text-center focus:outline-none transition-all duration-500   ease-in-out delay-300  
         ${isSubmitted ? "translate-y-full opacity-0 w-0 px-0" : "w-full px-2"}
         `}
         type="email"
@@ -43,10 +47,10 @@ export default function Ctabutton() {
       <button
         className={`h-full rounded-md overflow-hidden bg-[#1A1A1A] border-black border-2 flex justify-center items-center transition-all duration-1000 ease-in-out  ${
           isTyping
-            ? "translate-x-0 opacity-100 w-2/12"
+            ? "translate-x-0 opacity-100 w-1/3 md:w-2/12"
             : "translate-x-[100%] opacity-0 w-0"
         }
-        ${isSubmitted ? "w-2/3 delay-300 submitanimation" : ""}
+        ${isSubmitted ? "w-3/4 md:w-2/3 delay-300 submitanimation" : ""}
         `}
         type="submit"
       >

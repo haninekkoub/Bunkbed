@@ -25,7 +25,13 @@ body {
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
+    .gradienopacity {
+      background: rgb(255,255,255);
+      background: -moz-linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+      background: -webkit-linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#ffffff",GradientType=1);
+    }
     #logodraw {
       stroke-dasharray: 0 100; 
       animation: draw-path 2s ease-in-out forwards; 

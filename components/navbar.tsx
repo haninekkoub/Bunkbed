@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import Logo from "../assets/logo.svg";
 
 interface linkProps {
   name: string;
@@ -15,13 +13,14 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="font-SfPro font-medium text-base flex justify-between items-center tracking-wider ">
+    <nav className="font-SfPro font-medium text-xs md:text-base flex justify-between items-center tracking-wider ">
       <div>
         <svg
           width="62"
           height="62"
           viewBox="0 0 64 62"
           xmlns="http://www.w3.org/2000/svg"
+          className="w-12 h-12 md:h-[62px] md:w-[62px]"
         >
           <path
             id="logodraw"
@@ -32,7 +31,7 @@ export default function Navbar() {
           />
         </svg>
       </div>
-      <ul className="flex gap-20 opacity-50 uppercase">
+      <ul className=" gap-20 opacity-50 uppercase 2xl:text-xl hidden md:flex">
         {links.map((link, id) => (
           <li key={id}>
             <Link href={link.href}>{link.name}</Link>
@@ -40,7 +39,7 @@ export default function Navbar() {
         ))}
       </ul>
       <div className="gradien rounded-2xl p-[2px] ">
-        <div className="p-4 bg-white uppercase rounded-[14px] text-center">
+        <div className="p-3 md:p-4 bg-white uppercase rounded-[14px] text-center ">
           Get in touch
         </div>
       </div>

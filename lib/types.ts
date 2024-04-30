@@ -1,10 +1,16 @@
+interface AboutBlock {
+  _type: "block.banner";
+  aboutDescription: string;
+  icon: string;
+}
+
 interface Page {
   name: string;
   slug: {
     _type: "slug";
     current: string;
   };
-  // content: Array<>;
+  content: Array<AboutBlock>;
 }
 
-export type { Page };
+export type { AboutBlock, Page };

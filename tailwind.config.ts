@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        "4xl": "1920px",
+      },
       fontFamily: {
         Outreque: ["var(--outreque)"],
         SfPro: ["var(--sfPro)"],

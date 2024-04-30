@@ -77,14 +77,14 @@ export default function Magnets({
     <Link href={direction}>
       <div
         ref={ref}
-        className=" bg-[#1A1A1A] rounded-full h-20 w-20 grid place-items-center"
+        className=" bg-[#1A1A1A] rounded-full h-16 w-16 xl:h-20 xl:w-20 2xl:h-32 2xl:w-32 grid place-items-center"
       >
         <h5
           style={{
             transform: `translate(var(--tx, 0), var(--ty, 0))`,
             boxShadow: `var(--tx, 0) var(--ty, 0) 20px rgba(0, 0, 0, 0.5)`,
           }}
-          className="h-12 w-12 rounded-full grid place-items-center"
+          className="h-3/5 w-3/5 rounded-full grid place-items-center"
         >
           {children}
         </h5>

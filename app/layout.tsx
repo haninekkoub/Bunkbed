@@ -4,8 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/navbar";
 import Projects from "@/components/projects";
 import Footer from "@/components/footer";
-import About from "@/components/about";
 import Services from "@/components/services";
+import BannerText from "@/components/banner";
 
 const SfPro = localFont({
   src: [
@@ -73,17 +73,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${SfPro.variable} ${Outreque.variable} relative `}>
-        <div className="relative w-full bg-white py-14 z-30 ">
-          <div className="w-[86vw] max-w-[1240px] mx-auto">
+        <div className="relative w-full bg-white py-8 md:py-14 z-30 min-h-[100vh] ">
+          <div className="w-[92vw] xl:w-[86vw] max-w-[1240px] mx-auto">
             <Navbar />
-            {children}
+            <BannerText />
             <Projects />
-            <About />
+            {children}
             <Services />
           </div>
         </div>
         <Footer />
-        {/* <span className="bg-black w-full h-20 fixed bottom-0 left-1/2 -translate-x-1/2 -z-20" /> */}
       </body>
     </html>
   );

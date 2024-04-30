@@ -19,7 +19,7 @@ const reseaux: {
 
 export default function Socials() {
   return (
-    <ul className="flex gap-5 justify-center items-center flex-wrap max-w-96">
+    <ul className="flex gap-5 justify-center items-center flex-wrap w-full sm:w-1/2 lg:w-1/3 ">
       {reseaux.map((reseau, i) => (
         <Magnets direction={reseau.href} key={i}>
           <Image src={reseau.src} alt={"hello"} />

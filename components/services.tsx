@@ -74,12 +74,12 @@ export default function Services() {
   };
 
   return (
-    <div className="flex justify-between items-center w-full my-20 ">
-      <div className=" w-1/2 cursor-pointer flex flex-col gap-8 items-start">
+    <div className="flex md:flex-row flex-col-reverse gap-8 md:gap-0  justify-between items-center w-full my-20 ">
+      <div className="w-full md:w-1/2 cursor-pointer flex flex-col gap-8 items-start">
         {lists.map((list, i) => {
           return (
             <div
-              className={`w-full flex flex-col gap-6 transition-all duration-300 ease-in-out
+              className={`w-full flex flex-col gap-4 md:gap-6 transition-all duration-300 ease-in-out
               ${
                 (hovered && hoveredItemId === list.id) ||
                 (hoveredItemId === 1 && list.id === 1)
@@ -93,20 +93,20 @@ export default function Services() {
                 handleMouseEnter(list.id);
               }}
             >
-              <h4 className=" font-Outreque text-2xl font-medium">
+              <h4 className=" font-Outreque text-xl md:text-2xl font-medium">
                 {list.name}
               </h4>
               <div
-                className={`font-SfPro text-base font-normal grid -mt-4 ${
+                className={`font-SfPro font-normal grid -mt-4  ${
                   (hovered && hoveredItemId === list.id) ||
                   (hoveredItemId === 1 && list.id === 1)
-                    ? "height"
-                    : "small"
+                    ? "height -mt-2"
+                    : "small "
                 }
                 `}
               >
                 <p
-                  className={`font-SfPro text-base font-normal overflow-hidden
+                  className={`font-SfPro text-sm md:text-base font-normal overflow-hidden
                   }`}
                 >
                   {list.description}
@@ -128,14 +128,14 @@ export default function Services() {
           );
         })}
       </div>
-      <div className="h-[650px] w-[38%] rounded-2xl relative ">
+      <div className="md:h-[650px] h-[350px] w-full  md:w-[38%] relative ">
         <svg
           fill="none"
           height="100%"
           width="100%"
           viewBox="0 0 100% 100%"
           preserveAspectRatio="xMidYMin slice"
-          className="z-20 relative"
+          className="z-20 relative rounded-xl md:rounded-2xl"
         >
           <defs>
             <filter id="displacementFilter">
@@ -174,11 +174,11 @@ export default function Services() {
             preserveAspectRatio="xMidYMid slice"
           />
         </svg>
-        <div className="h-full w-full z-10 opacity-100 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="h-full w-full z-10 opacity-100 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
           <Image
             src={lists.find((item) => item.id === lastHoveredItemId)!.image}
             alt={"image"}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover rounded-xl md:rounded-2xl"
           />
         </div>
       </div>
