@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/navbar";
-import Projects from "@/components/projects";
 import Footer from "@/components/footer";
 import Services from "@/components/services";
-import BannerText from "@/components/banner";
 
 const SfPro = localFont({
   src: [
@@ -76,10 +74,7 @@ export default function RootLayout({
         <div className="relative w-full bg-white py-8 md:py-14 z-30 min-h-[100vh] ">
           <div className="w-[92vw] xl:w-[86vw] max-w-[1240px] mx-auto">
             <Navbar />
-            <BannerText />
-            <Projects />
             {children}
-            <Services />
           </div>
         </div>
         <Footer />

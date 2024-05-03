@@ -17,7 +17,12 @@ export default {
       name: "content",
       type: "array",
       title: "Page Content",
-      of: [{ type: "block.banner" }, { type: "block.about" }],
+      of: [
+        { type: "block.banner" },
+        { type: "block.about" },
+        { type: "block.projectsList" },
+        { type: "block.servicesList" },
+      ],
     },
   ],
 };

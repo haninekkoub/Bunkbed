@@ -6,26 +6,19 @@ import {
 } from "embla-carousel";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
-import Image from "next/image";
-import image1 from "./assets/img-1.jpg";
-import image2 from "./assets/img-2.jpg";
-import image3 from "./assets/img-3.jpg";
+import { Project } from "@/lib/types";
+import Images from "./images";
 
-const images = [
-  { src: image1, id: 1, name: "image1" },
-  { src: image2, id: 2, name: "image2" },
-  { src: image3, id: 3, name: "image3" },
-];
-
-type PropType = {
-  options?: EmblaOptionsType;
-};
 const TWEEN_FACTOR_BASE = 0.52;
 
 const numberWithinRange = (number: number, min: number, max: number): number =>
   Math.min(Math.max(number, min), max);
-export default function EmblaCarousel(props: PropType) {
-  const { options } = props;
+
+type PropType = {
+  options?: EmblaOptionsType;
+  projects: Project[];
+};
+export default function EmblaCarousel({ projects, options }: PropType) {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()]);
 
   const tweenFactor = useRef(0);
@@ -79,9 +72,6 @@ export default function EmblaCarousel(props: PropType) {
           const grayscale = numberWithinRange(tweengrayValue, 0, 1);
           const tweenNode = tweenNodes.current[slideIndex];
           tweenNode.style.transform = `scale(${scale})`;
-          // emblaApi.slideNodes()[
-          //   slideIndex
-          // ].style.filter = `grayscale(calc(1 - ${grayscale} ))`;
           tweenNode.style.filter = `grayscale(calc(1 - ${grayscale} ))`;
         });
       });
@@ -105,16 +95,14 @@ export default function EmblaCarousel(props: PropType) {
     <section className="embla mx-auto min-w-full flex items-center">
       <div className="overflow-hidden h-[80%] w-full" ref={emblaRef}>
         <div className="flex h-full touch-pan-y ">
-          {images.map(({ id, src }) => (
+          {projects?.map((project: Project, i: number) => (
             <div
-              key={id}
+              key={i}
               className="flex-grow-0 flex-shrink-0 w-[70%] md:w-[60%] min-w-0 relative hover:cursor-pointer"
             >
-              <Image
-                src={src}
-                alt={"project"}
-                height={500}
-                width={500}
+              <Images
+                image={project.image}
+                alt={"Project Images"}
                 className="slide  w-full h-full object-cover rounded-2xl "
               />
             </div>

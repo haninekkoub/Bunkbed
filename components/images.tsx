@@ -1,28 +1,25 @@
 import { urlFor } from "@/lib/sanity";
-import Image from "next/image";
-import DefaultImage from "@/public/defaultImage.png";
 import { cn } from "@/lib/utils";
+import DefaultImage from "@/public/defaultImage.png";
+import Image from "next/image";
 
 interface Props {
-  image: "image";
+  image: "image" | string;
   alt: string;
   className?: string;
 }
 export default function Images({ image, alt, className }: Props) {
   const getUrl = (currentimage: "image") =>
     currentimage ? urlFor(currentimage).url() : DefaultImage;
-
-  const imageUrl = getUrl(image);
+  const imageUrl = typeof image === "string" ? image : getUrl(image);
   return (
     <Image
       src={imageUrl}
-      height={500}
-      width={500}
+      fill={true}
       alt={alt}
-      className={cn(
-        "object-cover object-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
-        className
-      )}
+      priority={true}
+      sizes="(max-width: 768px) 60%, 70%"
+      className={cn("object-cover object-center", className)}
     />
   );
 }

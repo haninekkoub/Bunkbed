@@ -5,7 +5,23 @@ import Link from "next/link";
 
 export default async function Page({ params }: { params: { slug: string[] } }) {
   const pathname = "/" + (params.slug?.join("/") || "");
-  const query = `*[_type == "page" && slug.current == $slug][0]`;
+  const query = `
+  *[_type == "page" && slug.current == $slug][0]{
+    ...,
+    content[]{
+      ...,
+      _type == "block.projectsList" => {
+        "projects": content[]->{
+          ...,
+        }
+      },
+      _type == "block.servicesList" => {
+        "services": content[]->{
+          ...,
+        }
+      }
+    }
+  }`;
   const page = await client.fetch(
     query,
     { slug: pathname },

@@ -35,7 +35,7 @@ export default function Ctabutton() {
         Thank You!
       </span>
       <input
-        className={`placeholder:text-white placeholder:opacity-50 placeholder:text-sm md:placeholder:text-base fill:bg-transparent bg-transparent font-Outreque py-2  text-center focus:outline-none transition-all duration-500   ease-in-out delay-300  
+        className={`placeholder:text-white placeholder:opacity-50 placeholder:text-sm md:placeholder:text-base xl:placeholder:text-3xl fill:bg-transparent bg-transparent font-Outreque py-2  text-center focus:outline-none transition-all duration-500   ease-in-out delay-300  
         ${isSubmitted ? "translate-y-full opacity-0 w-0 px-0" : "w-full px-2"}
         `}
         type="email"
